@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nabila Shop</title>
+<style>
+body{font-family:Arial; margin:0; padding:0 0 70px 0; background:#f5f5f5}
+.header{background:#d63384; color:white; padding:15px; text-align:center; position:sticky; top:0}
+.header h1{margin:0; font-size:20px}
+.produit{background:white; margin:10px; padding:10px; border-radius:8px}
+.produit img{width:100%; border-radius:6px}
+.prix{color:#d63384; font-size:18px; font-weight:bold}
+.btn-wa{display:block; background:#25D366; color:white; text-align:center; padding:10px; border-radius:6px; text-decoration:none; margin-top:5px}
+.menu{position:fixed; bottom:0; left:0; right:0; background:white; display:flex; border-top:1px solid #ddd}
+.menu a{flex:1; text-align:center; padding:10px 0; text-decoration:none; color:#666; font-size:12px}
+.menu a.active{color:#d63384}
+.page{display:none; padding:10px}
+.page.active{display:block}
+</style>
+</head>
+<body>
+
+<div class="header"><h1>👗 Nabila Shop</h1></div>
+
+<div id="produits" class="page active">
+  <div class="produit">
+    <img src="https://via.placeholder.com/400x300/d63384/fff?text=Robe">
+    <h3>Robe Élégante</h3>
+    <p>Tailles : S M L XL</p>
+    <div class="prix">15 000 FCFA</div>
+    <a class="btn-wa" href="https://wa.me/22607099223?text=Commande%20Robe%20Taille%3A%20__">Commander WhatsApp</a>
+    <div style="font-size:11px; color:gray; text-align:center">Paiement OM/Moov/Wave : 07 09 92 23</div>
+  </div>
+</div>
+
+<div class="menu">
+  <a href="#" onclick="showPage('produits')" class="active"><span>🛍️</span>Produits</a>
+  <a href="https://wa.me/22607099223"><span>💬</span>Contact</a>
+</div>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
