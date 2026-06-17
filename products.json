@@ -2,6 +2,5 @@
 {"nom":"Robe élégante","prix":15000,"cat":"Robes","img":"p1.jpg","desc":"Taille S-L"},
 {"nom":"Sandales chic","prix":8000,"cat":"Chaussures","img":"p2.jpg","desc":"Pointure 38-41"},
 {"nom":"Sac à main","prix":12000,"cat":"Sacs","img":"p3.jpg","desc":"Cuir synthétique"},
-{"nom":"Robe soirée","prix":20000,"cat":"Robes","img":"p4.jpg","desc":"Taille M-XL"},
-{"nom":"chaussures","prix":4500,"cat":" chaussures","img":"p5.jpg","desc":"original"},
+{"nom":"Robe soirée","prix":20000,"cat":"Robes","img":"p4.jpg","desc":"Taille M-XL"}
 ]
