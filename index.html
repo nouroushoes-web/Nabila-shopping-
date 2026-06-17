@@ -3,54 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nabila Shop</title>
+<title>Nabila Shopping</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#E91E63">
 <style>
-body{font-family:Arial; margin:0; padding:0 0 70px 0; background:#f5f5f5}
-.header{background:#d63384; color:white; padding:15px; text-align:center; position:sticky; top:0}
-.header h1{margin:0; font-size:20px}
-.produit{background:white; margin:10px; padding:10px; border-radius:8px}
-.produit img{width:100%; border-radius:6px}
-.prix{color:#d63384; font-size:18px; font-weight:bold}
-.btn-wa{display:block; background:#25D366; color:white; text-align:center; padding:10px; border-radius:6px; text-decoration:none; margin-top:5px}
-.menu{position:fixed; bottom:0; left:0; right:0; background:white; display:flex; border-top:1px solid #ddd}
-.menu a{flex:1; text-align:center; padding:10px 0; text-decoration:none; color:#666; font-size:12px}
-.menu a.active{color:#d63384}
-.page{display:none; padding:10px}
-.page.active{display:block}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f5f5f5}
+header{background:#E91E63;color:white;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+header h1{font-size:18px}
+.panier-btn{background:white;color:#E91E63;border:none;padding:8px 12px;border-radius:20px;font-weight:bold;cursor:pointer}
+.search{padding:10px;background:white}
+.search input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
+.filtres{display:flex;gap:8px;padding:10px;overflow-x:auto;background:white}
+.filtre{padding:8px 15px;border:1px solid #E91E63;border-radius:20px;white-space:nowrap;cursor:pointer;font-size:14px}
+.filtre.actif{background:#E91E63;color:white}
+.produits{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:10px}
+.produit{background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.produit img{width:100%;height:140px;object-fit:cover}
+.produit h3{padding:8px;font-size:14px}
+.produit p{padding:0 8px;color:#E91E63;font-weight:bold}
+.produit button{width:100%;padding:8px;background:#25D366;color:white;border:none;cursor:pointer}
+#panierModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:100}
+.panier-content{background:white;margin:10% auto;padding:20px;border-radius:8px;width:90%;max-height:80%;overflow-y:auto}
+.item-panier{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee}
+.paiement{margin-top:15px;padding-top:15px;border-top:2px solid #E91E63}
+.paiement button{width:100%;padding:12px;margin:5px 0;border:none;border-radius:8px;color:white;font-weight:bold;cursor:pointer}
+.orange{background:#FF6600}
+.moov{background:#0047AB}
+.wave{background:#35C2F8}
+.whatsapp{background:#25D366}
 </style>
 </head>
 <body>
+<header>
+<h1>Nabila Shopping</h1>
+<button class="panier-btn" onclick="ouvrirPanier()">Panier (<span id="nbPanier">0</span>)</button>
+</header>
 
-<div class="header"><h1>👗 Nabila Shop</h1></div>
-
-<div class="cats">
-  <button onclick="filterCat('all')" class="active">Tout</button>
-  <button onclick="filterCat('vetement')">Vêtements</button>
-  <button onclick="filterCat('chaussure')">Chaussures</button>
-  <button onclick="filterCat('accessoire')">Accessoires</button>
-</div>
-  <div id="produits" class="page active">
-  <div class="produit">
-    <img src="https://via.placeholder.com/400x300/d63384/fff?text=Robe">
-    <h3>Robe Élégante</h3>
-    <p>Tailles : S M L XL</p>
-    <div class="prix">15 000 FCFA</div>
-    <a class="btn-wa" href="https://wa.me/22607099223?text=Commande%20Robe%20Taille%3A%20__">Commander WhatsApp</a>
-    <div style="font-size:11px; color:gray; text-align:center">Paiement OM/Moov/Wave : 07 09 92 23</div>
-  </div>
+<div class="search">
+<input type="text" id="searchInput" placeholder="Recher un produit...">
 </div>
 
-<div class="menu">
-  <a href="#" onclick="showPage('produits')" class="active"><span>🛍️</span>Produits</a>
-  <a href="https://wa.me/22607099223"><span>💬</span>Contact</a>
+<div class="filtres" id="filtres"></div>
+<div class="produits" id="liste"></div>
+
+<div id="panierModal">
+<div class="panier-content">
+<h2>Ton Panier</h2>
+<div id="itemsPanier"></div>
+<h3>Total: <span id="total">0</span> FCFA</h3>
+<div class="paiement">
+<p><b>Mode de paiement Mobile Money :</b></p>
+<button class="orange" onclick="payer('Orange Money +22607099223')">Orange Money +22607099223</button>
+<button class="wave" onclick="payer('Wave +22607099223')">Wave +22607099223</button>
+<button class="moov" onclick="payer('Moov Money +22601874000')">Moov Money +22601874000</button>
+<button class="whatsapp" onclick="commanderWhatsApp()">Commander sur WhatsApp</button>
+</div>
+<button onclick="fermerPanier()" style="width:100%;padding:10px;margin-top:10px;background:#ccc;border:none;border-radius:8px">Fermer</button>
+</div>
 </div>
 
 <script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-</script>
+let produits = [];
+let panier = [];
+let catActive = 'Tous';
 
+fetch('products.json')
+.then(res => res.json())
+.then(data => {
+produits = data;
+afficherFiltres();
+afficher();
+});
+
+document.getElementById('searchInput').oninput = afficher;
+
+function afficherFiltres(){
+const cats = ['Tous', ...new Set(produits.map(p=>p.cat))];
+document.getElementById('filtres').innerHTML = cats.map(c => 
+`<div class="filtre ${c==='Tous'?'actif':''}" onclick="filtrer('${c}')">${c}</div>`
+).join('');
+}
+
+function filtrer(cat){
+catActive = cat;
+document.querySelectorAll('.filtre').forEach(f=>f.classList.remove('actif'));
+event.target.classList.add('actif');
+afficher();
+}
+
+function afficher(){
+const search = document.getElementById('searchInput').value.toLowerCase();
+let html = "";
+produits.forEach((p,i)=>{
+if((catActive==='Tous' || p.cat===catActive) && p.nom.toLowerCase().includes(search)){
+html += `<div class="produit">
+<img src="${p.img}">
+<h3>${p.nom}</h3>
+<p>${p.prix} FCFA</p>
+<button onclick="ajouterPanier(${i})">Ajouter au panier</button>
+</div>`;
+}
+});
+document.getElementById('liste').innerHTML = html;
+}
+
+function ajouterPanier(i){
+panier.push(produits[i]);
+document.getElementById('nbPanier').innerText = panier.length;
+alert(panier[panier.length-1].nom + ' ajouté !');
+}
+
+function ouvrirPanier(){
+let html = "";
+let total = 0;
+panier.forEach((p,i)=>{
+html += `<div class="item-panier"><span>${p.nom}</span><span>${p.prix} FCFA</span></div>`;
+total += p.prix;
+});
+document.getElementById('itemsPanier').innerHTML = html || '<p>Panier vide</p>';
+document.getElementById('total').innerText = total;
+document.getElementById('panierModal').style.display = 'block';
+}
+
+function fermerPanier(){
+document.getElementById('panierModal').style.display = 'none';
+}
+
+function payer(moyen){
+if(panier.length===0) return alert('Panier vide');
+alert('Envoie '+document.getElementById('total').innerText+' FCFA sur '+moyen+' puis clique WhatsApp pour confirmer');
+}
+
+function commanderWhatsApp(){
+if(panier.length===0) return alert('Panier vide');
+let msg = 'Bonjour Nabila Shopping, je commande:%0A';
+panier.forEach(p=>msg += '- '+p.nom+' '+p.prix+' FCFA%0A');
+msg += 'Total: '+document.getElementById('total').innerText+' FCFA';
+window.open('https://wa.me/22607099223?text='+msg);
+}
+
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
 </body>
 </html>
