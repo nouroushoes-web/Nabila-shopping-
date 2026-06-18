@@ -1,34 +1,37 @@
 [
   {
-    "whatsapp": "22670123456",
     "nom": "213 Strass New Lily",
     "prix": 4000,
     "img": "p11.jpg",
-    "desc": "Couleurs variées"
-  }
+    "desc": "Couleurs variées",
+    "whatsapp": "22607099223"
+  },
   {
     "nom": "sacs",
     "prix": 4000,
-    "img": "p11.jpg"
+    "img": "p11.jpg",
+    "desc": "En stock",
+    "whatsapp": "22607099223"
   },
   {
     "nom": "chaussures talons",
     "prix": 6000,
-    "img": "p12.jpg"
+    "img": "p12.jpg",
+    "desc": "En stock",
+    "whatsapp": "22607099223"
   },
   {
     "nom": "claquettes",
     "prix": 3500,
-    "img": "p13.jpg"
+    "img": "p13.jpg",
+    "desc": "En stock",
+    "whatsapp": "22607099223"
   },
   {
     "nom": "claquettes",
     "prix": 4000,
-    "img": "p14.jpg"
-  },
-  {
-    "nom": "claquettes femme",
-    "prix": 4000,
-    "img": "p15.jpg"
+    "img": "p14.jpg",
+    "desc": "En stock",
+    "whatsapp": "22607099223"
   }
 ]
