@@ -1,10 +1,27 @@
 [
-{"nom":"BC-77721 Fourrure LV","prix":4000,"cat":"Tongs fourrure","img":"p1.jpg","desc":"37-41, 36PRS"},
-{"nom":"7BU3 Plateforme","prix":4000,"cat":"Plateformes","img":"p2.jpg","desc":"37-42, 36PRS"},
-{"nom":"213 Strass New Lily","prix":4000,"cat":"Strass","img":"p3.jpg","desc":"Couleurs variées"},
-{"nom":"7BU6 Plateforme Papillon","prix":4000,"cat":"Plateformes","img":"p4.jpg","desc":"37-42, 36PRS"},
-{"nom":"FM491 Boucles Jean","prix":4000,"cat":"Jean","img":"p5.jpg","desc":"Modèle Sara"},
-{"nom":"FM490 3 Brides","prix":4000,"desc":"Modèle Sara","cat":"Casual","img":"p6.jpg"},
-{"nom":"BC-77723 Fourrure Boucle","prix":4000,"cat":"Tongs fourrure","img":"p7.jpg","desc":"37-41, 36PRS"},
-{"nom":"Strass Double Boucle","prix":4000,"cat":"Strass","img":"p8.jpg","desc":"Pointure 40"}
+  {
+    "nom": "sacs",
+    "prix": 4000,
+    "img": "p11.jpg"
+  },
+  {
+    "nom": "chaussures talons",
+    "prix": 6000,
+    "img": "p12.jpg"
+  },
+  {
+    "nom": "claquettes",
+    "prix": 3500,
+    "img": "p13.jpg"
+  },
+  {
+    "nom": "claquettes",
+    "prix": 4000,
+    "img": "p14.jpg"
+  },
+  {
+    "nom": "claquettes femme",
+    "prix": 4000,
+    "img": "p15.jpg"
+  }
 ]
